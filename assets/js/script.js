@@ -1,4 +1,5 @@
-const APIKey = "1c0b296429a846ab169e7fc204e8759b"
+const APIKey = "1c0b296429a846ab169e7fc204e8759b";
+var currentWeatherEl = document.querySelector("#current-weather");
 
 function getWeather() {
     var lat = "42.32";
@@ -11,14 +12,29 @@ function getWeather() {
     })
     .then(function(data) {
         console.log(data)
-        //var currentTemp = 
-        console.log(data.current.feels_like)
-        //var currentWind = 
-        console.log(data.current.wind_speed)
-        //var currentHum = 
-        console.log(data.current.humidity)
-        //var currentUV = 
-        console.log(data.current.uvi)
+        var currentTemp = data.current.feels_like;
+        var currentWind = data.current.wind_speed;
+        var currentHum = data.current.humidity;
+        var currentUV = data.current.uvi;
+
+        //display current weather
+       var displayTemp = document.createElement("p");
+       displayTemp.innerHTML = "Temperature: " + currentTemp + " C";
+       currentWeatherEl.append(displayTemp);
+
+       var displayWind = document.createElement("p");
+       displayWind = "Wind Speed: " + currentWind + "m/s";
+       currentWeatherEl.append(displayWind);
+
+       var displayHum = document.createElement("p");
+       displayHum = "Humidity: " + currentHum + "%";
+       currentWeatherEl.append(displayHum);
+
+       var displayUV = document.createElement("p");
+       displayUV = "UV index: " + currentUV;
+       currentWeatherEl.append(displayUV);
+
+    
     });
 }
 
